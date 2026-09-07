@@ -10,16 +10,26 @@ class Canteen {
 
     Scanner sc = new Scanner(System.in);
 
-    System.out.println("Enter item number: ");
+    System.out.print("Enter item number: ");
     int foodItem = sc.nextInt();
 
-    System.out.println("Enter quantity: ");
+    System.out.print("Enter quantity: ");
     int quantity = sc.nextInt();
 
-    System.out.println("Are you a student? (Y/N)");
+    System.out.print("Are you a student? (Y/N)");
     String studentStatus = sc.next();
 
+    sc.close();
+
     boolean isStudent = studentStatus.equalsIgnoreCase("Y");
+    boolean validFood = (foodItem >= 1 && foodItem <= foodMenu.length);
+    boolean validQuantity = (quantity >= 1 && quantity <= 10);
+
+    if (!validFood || !validQuantity) {
+        System.out.println("Invalid order! Please enter a valid item and quantity");
+    }
+
+
 
 
     }
