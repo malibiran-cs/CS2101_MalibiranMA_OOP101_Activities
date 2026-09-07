@@ -2,14 +2,18 @@ import java.util.Scanner;
 class Canteen {
     public static void main(String[] args) {
     String[] foodMenu = {"Burger", "Pizza", "Bacon Egg and Cheese Sandwich", "Nachos", "Fish Fillet"};
-    double[] foodPrices = {10.00, 15.00, 25.00, 15.00, 20.00};
+    double[] foodPrice = {10.00, 15.00, 25.00, 15.00, 20.00};
 
     String orderAgain;
+    int totalFood = 0;
+    double subtotal = 0.0;
+    double totalDiscount = 0.0;
+    double finalTotal = 0.0;
 
 do {
     System.out.println("=====   M E N U   =====");
     for (int i = 0; i < foodMenu.length; i++) {
-        System.out.println((i + 1) + ". " + foodMenu[i] + " - $" + foodPrices[i]);    }
+        System.out.println((i + 1) + ". " + foodMenu[i] + " - $" + foodPrice[i]);    }
 
     Scanner sc = new Scanner(System.in);
 
@@ -31,7 +35,10 @@ do {
     }
 
     else {
-        double orderAmount = foodPrices[foodItem - 1] * quantity;
+        totalFood += quantity;
+
+        double orderAmount = foodPrice[foodItem - 1] * quantity;
+        subtotal += orderAmount;
         double discountRate = 0.0;
         if (isStudent && orderAmount >= 500) {
             discountRate = 0.15;
@@ -48,12 +55,30 @@ do {
         double deduction = orderAmount * discountRate;
         double finalAmount = orderAmount - deduction;
 
+        subtotal += orderAmount;
+        totalFood += quantity;
+        totalDiscount += deduction;
+        finalTotal += finalAmount;
+
+        System.out.println("Subtotal: $" + orderAmount);
+        System.out.println("Discount: $" + (finalAmount - orderAmount));
+        System.out.println("Order total: $" + finalAmount);
+
     }
 
     System.out.print("Do you want to order again? (Y/N): ");
     orderAgain = sc.next();
 
 } while (orderAgain.equalsIgnoreCase("Y"));
+
+System.out.println("===== ORDER SUMMARY =====");
+System.out.println("Total items: " + totalFood);
+System.out.println("Total before discount: $" + subtotal);
+System.out.println("Total discount: $" + totalDiscount);
+System.out.println("Final amount: $" + finalTotal);
+System.out.println("Thank you for ordering!");
+
+
 
 
 
