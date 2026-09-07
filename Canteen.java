@@ -29,8 +29,24 @@ class Canteen {
         System.out.println("Invalid order! Please enter a valid item and quantity");
     }
 
+    else {
+        double orderAmount = foodPrices[foodItem - 1] * quantity;
+        double discountRate = 0.0;
+        if (isStudent && orderAmount >= 500) {
+            discountRate = 0.15;
+        }
 
+        else if (isStudent){
+            discountRate = 0.10;
+        }
 
+        else if (orderAmount >= 500){
+            discountRate = 0.05;
+        }
+
+        double deduction = orderAmount * discountRate;
+        double finalAmount = orderAmount - deduction;
+    }
 
     }
 }
