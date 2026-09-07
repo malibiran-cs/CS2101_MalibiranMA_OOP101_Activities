@@ -4,6 +4,9 @@ class Canteen {
     String[] foodMenu = {"Burger", "Pizza", "Bacon Egg and Cheese Sandwich", "Nachos", "Fish Fillet"};
     double[] foodPrices = {10.00, 15.00, 25.00, 15.00, 20.00};
 
+    String orderAgain;
+
+do {
     System.out.println("=====   M E N U   =====");
     for (int i = 0; i < foodMenu.length; i++) {
         System.out.println((i + 1) + ". " + foodMenu[i] + " - $" + foodPrices[i]);    }
@@ -18,8 +21,6 @@ class Canteen {
 
     System.out.print("Are you a student? (Y/N)");
     String studentStatus = sc.next();
-
-    sc.close();
 
     boolean isStudent = studentStatus.equalsIgnoreCase("Y");
     boolean validFood = (foodItem >= 1 && foodItem <= foodMenu.length);
@@ -46,7 +47,17 @@ class Canteen {
 
         double deduction = orderAmount * discountRate;
         double finalAmount = orderAmount - deduction;
+
     }
+
+    System.out.print("Do you want to order again? (Y/N): ");
+    orderAgain = sc.next();
+
+} while (orderAgain.equalsIgnoreCase("Y"));
+
+
+
+    
 
     }
 }
