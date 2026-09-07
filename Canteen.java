@@ -13,9 +13,11 @@ class Canteen {
 do {
     System.out.println("=====   M E N U   =====");
     for (int i = 0; i < foodMenu.length; i++) {
-        System.out.println((i + 1) + ". " + foodMenu[i] + " - $" + foodPrice[i]);    }
+        System.out.printf("%d. %s - $%.2f%n", (i + 1), foodMenu[i], foodPrice[i]);    }
 
     Scanner sc = new Scanner(System.in);
+
+    System.out.println("");
 
     System.out.print("Enter item number: ");
     int foodItem = sc.nextInt();
@@ -23,7 +25,7 @@ do {
     System.out.print("Enter quantity: ");
     int quantity = sc.nextInt();
 
-    System.out.print("Are you a student? (Y/N)");
+    System.out.print("Are you a student? (Y/N): ");
     String studentStatus = sc.next();
 
     boolean isStudent = studentStatus.equalsIgnoreCase("Y");
@@ -60,9 +62,9 @@ do {
         totalDiscount += deduction;
         finalTotal += finalAmount;
 
-        System.out.println("Subtotal: $" + orderAmount);
-        System.out.println("Discount: $" + (finalAmount - orderAmount));
-        System.out.println("Order total: $" + finalAmount);
+        System.out.printf("Subtotal: $%.2f%n" + orderAmount);
+        System.out.printf("Discount: $%.2f%n" + (finalAmount - orderAmount));
+        System.out.printf("Order total: $%.2f%n" + finalAmount);
 
     }
 
@@ -73,9 +75,9 @@ do {
 
 System.out.println("===== ORDER SUMMARY =====");
 System.out.println("Total items: " + totalFood);
-System.out.println("Total before discount: $" + subtotal);
-System.out.println("Total discount: $" + totalDiscount);
-System.out.println("Final amount: $" + finalTotal);
+System.out.printf("Total before discount: $%.2f%n" + subtotal);
+System.out.printf("Total discount: $%.2f%n" + totalDiscount);
+System.out.printf("Final amount: $%.2f%n" + finalTotal);
 System.out.println("Thank you for ordering!");
 
 
